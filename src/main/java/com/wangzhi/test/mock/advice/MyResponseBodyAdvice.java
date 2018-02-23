@@ -72,7 +72,10 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice {
      * @return
      */
     private Object getRealResponse(ServerHttpRequest request, Mock mock) {
-        String host = mock == null ? ProjectConstant.DEFAULT_ROOT : mock.getRemote_root();
+        String host = ProjectConstant.DEFAULT_ROOT;
+        if (mock != null && mock.getRemote_root()!=null && !"".equals(mock.getRemote_root())){
+            host = mock.getRemote_root();
+        }
         String scheme = request.getURI().getScheme();
         String path = request.getURI().getPath();
         //params

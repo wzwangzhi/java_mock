@@ -14,5 +14,5 @@ public final class ProjectConstant {
 
     public static final String MAPPER_INTERFACE_REFERENCE = BASE_PACKAGE + ".core.Mapper";//Mapper插件基础接口的完全限定名
 
-    public static final String DEFAULT_ROOT = "api.test.com";//默认的远端域名
+    public static final String DEFAULT_ROOT = "www.wanandroid.com";//默认的远端域名
 }
