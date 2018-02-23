@@ -59,8 +59,8 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice {
         if (request instanceof ServletServerHttpRequest) {
             ServletServerHttpRequest servletServerHttpRequest = (ServletServerHttpRequest) request;
             Map<String, String[]> requestParameterMap = servletServerHttpRequest.getServletRequest().getParameterMap();
-            if (requestParameterMap != null && requestParameterMap.containsKey("userId")) {
-                return requestParameterMap.get("userId")[0];
+            if (requestParameterMap != null && requestParameterMap.containsKey("mockUserId")) {
+                return requestParameterMap.get("mockUserId")[0];
             }
         }
         return "-1";
