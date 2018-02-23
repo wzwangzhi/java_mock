@@ -1,0 +1,5 @@
+var BASE_URI = "http://localhost:8080"
+var URI_LOGIN = BASE_URI + "/wangzhi/user/login"
+var URI_MOCK_LIST = BASE_URI + "/wangzhi/mock/list"
+var URI_MOCK_DELETE = BASE_URI + "/wangzhi/mock/delete"
+var URI_MOCK_SAVE= BASE_URI + "/wangzhi/mock/save"

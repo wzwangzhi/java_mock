@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <script>
+        if (sessionStorage.userId == undefined || sessionStorage.userId == "") {
+            location.replace("./login.html");
+        }
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>列表</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/theme.css" rel="stylesheet">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/Api.js"></script>
+        <style>
+            body {
+                padding-top: 20px;
+            }
+        </style>
+    </head>
+<body>
+<div>
+    <div class="table">
+        <button type="button" class="btn btn-success" onclick="editClick()">添加</button>
+        <button type="button" class="btn btn-danger" onclick="signOutClick()">退出登录</button>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>path</th>
+            <th>response</th>
+            <th>remote_root</th>
+            <th>is_open</th>
+            <th>edit</th>
+        </tr>
+        </thead>
+        <tbody id="mockList">
+        </tbody>
+    </table>
+</div>
+<script>
+    /**
+     * 初始化布局
+     * @param result
+     */
+    function initList(result) {
+        var htmlString = "";
+        for (var i = 0; i < result.length; i++) {
+            var item = result[i]
+            var isopen = item.is_open == "1" ? "open" : "close"
+            var response
+            if (item.response.length > 100) {
+                response = item.response.substr(0, 97);
+                response += "......"
+            } else {
+                response = item.response
+            }
+            htmlString += "<tr>" +
+                "<td>" + item.path + "</td>>" +
+                "<td>" + response + "</td>>" +
+                "<td>" + item.remote_root + "</td>>" +
+                "<td>" + isopen + "</td>>" +
+                "<td><button  type=\"button\" class=\"btn btn-xs btn-info\" onclick='editClick(" + JSON.stringify(item) + ")'>edit</button></td>>" +
+                "</tr>"
+        }
+        $("#mockList").append(htmlString);
+    }
+
+    function editClick(mockItem) {
+        if (mockItem) {
+            sessionStorage.mockItem = JSON.stringify(mockItem)
+
+        } else {
+            sessionStorage.mockItem = ''
+        }
+        location.href = "editMock.html"
+    }
+
+    function signOutClick() {
+        sessionStorage.userId = ""
+        location.replace("./login.html")
+    }
+
+    window.onload = function () {
+        $.post(URI_MOCK_LIST, {userId: sessionStorage.userId},
+            function (result) {
+                if (result.code == 200) {
+                    initList(result.data)
+                } else {
+                    alert(result.message)
+                }
+            }),
+            function (error) {
+                alert("网络连接失败！")
+            }
+    }
+
+</script>
+</body>
+</html>

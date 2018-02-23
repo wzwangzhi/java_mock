@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <script>
+        if (sessionStorage.userId == undefined || sessionStorage.userId == ""){
+            location.replace("./login.html");
+        }
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>编辑</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/Api.js"></script>
+        <style>
+            body {
+                padding: 20px;
+            }
+
+            span {
+                display: block;
+                width: 60px;
+                height: 100%;
+            }
+        </style>
+    </head>
+<body>
+<span>path:</span>
+<input type="text" id="path" placeholder="/aa/bb.json">
+<span>response:</span>
+<textarea id="response" rows="6" cols="50"></textarea>
+<span>remote_root:</span>
+<input type="text" id="remote_root" placeholder="api.100iec.com">
+<span>is_open:</span>
+<input type="text" id="is_open" placeholder="0:关闭；1：开启" value="1">
+<div style="margin-top: 5px">
+    <button type="button" class="btn btn-danger" onclick="deleteClick()">delete</button>
+    <button type="button" class="btn btn-success" onclick="saveClick()">save</button>
+</div>
+<script>
+    window.onload = function (ev) {
+        if (sessionStorage.mockItem == '') {
+            $(".btn-danger").hide()
+            return
+        }
+        var mockItem = JSON.parse(sessionStorage.mockItem)
+        $("#path").val(mockItem.path)
+        $("#response").val(mockItem.response)
+        $("#remote_root").val(mockItem.remote_root)
+        $("#is_open").val(mockItem.is_open)
+    }
+
+    function deleteClick() {
+        var params = {
+            id: JSON.parse(sessionStorage.mockItem).id
+        };
+        $.post(URI_MOCK_DELETE, params,
+            function (result) {
+                if (result.code == 200) {
+                    alert("删除成功")
+                    location.replace("mockList.html")
+                } else {
+                    alert(result.message)
+                }
+            }),
+            function (error) {
+                alert("网络连接失败！")
+            }
+    }
+
+    function saveClick() {
+        var path = $("#path").val()
+        var response = $("#response").val()
+        var remote_root = $("#remote_root").val()
+        var is_open = $("#is_open").val()
+        if (!path) {
+            alert("path 不能为空")
+            return
+        }
+        if (!response) {
+            alert("response 不能为空")
+            return
+        }
+        if (!is_open) {
+            alert("is_open 不能为空")
+            return
+        }
+        var params = {
+            userId: sessionStorage.userId,
+            path: path,
+            response: response,
+            remote_root: remote_root,
+            is_open: is_open
+        };
+        if (sessionStorage.mockItem != '') {
+            params.id = JSON.parse(sessionStorage.mockItem).id
+        }
+        $.post(URI_MOCK_SAVE, params,
+            function (result) {
+                if (result.code == 200) {
+                    alert("保存成功")
+                    location.replace("mockList.html")
+                } else {
+                    alert(result.message)
+                }
+            }),
+            function (error) {
+                alert("网络连接失败！")
+            }
+    }
+</script>
+</body>
+</html>

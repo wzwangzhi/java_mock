@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangzhi.test.mock.dao.MockMapper">
+    <resultMap id="MockResultMap" type="com.wangzhi.test.mock.model.Mock">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <id column="user_id" jdbcType="INTEGER" property="user_id"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="response" jdbcType="VARCHAR" property="response"/>
+        <result column="is_open" jdbcType="VARCHAR" property="is_open"/>
+        <result column="remote_root" jdbcType="VARCHAR" property="remote_root"/>
+    </resultMap>
+    <select id="selectMockByPath" parameterType="String" resultType="com.wangzhi.test.mock.model.Mock">
+    SELECT * FROM MOCK WHERE path = #{path,jdbcType=VARCHAR} AND user_id = #{userId,jdbcType=VARCHAR}
+    </select>
+    <select id="selectMockByUser" parameterType="String" resultMap="MockResultMap">
+    SELECT * FROM MOCK WHERE user_id = #{userId}
+    </select>
+</mapper>
