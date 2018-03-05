@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>列表</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/theme.css" rel="stylesheet">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/Api.js"></script>
+        <style>
+            body {
+                padding-top: 20px;
+            }
+
+            input {
+                width: 100%;
+            }
+        </style>
+    </head>
+<body>
+<div>
+    <div class="table">
+        <!--<button type="button" class="btn btn-success" onclick="editClick()">添加</button>-->
+        <!--<button type="button" class="btn btn-danger" onclick="signOutClick()">退出登录</button>-->
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>userName</th>
+            <th>loginToken</th>
+            <!--<th>remote_root</th>-->
+            <!--<th>is_open</th>-->
+            <!--<th>edit</th>-->
+        </tr>
+        </thead>
+        <tbody id="mockList">
+        </tbody>
+    </table>
+</div>
+<script>
+    /**
+     * 初始化布局
+     * @param result
+     */
+    function initList(result) {
+        var htmlString = "";
+        for (var i = 0; i < result.length; i++) {
+            var item = result[i]
+            htmlString += "<tr>" +
+                "<td>" + item.userName + "</td>" +
+                "<td>" + item.loginToken + "</td>" +
+                // "<td><button  type=\"button\" class=\"btn btn-xs btn-info\" onclick='editClick(" + JSON.stringify(item) + ")'>save</button></td>>" +
+                "</tr>"
+        }
+        $("#mockList").append(htmlString);
+    }
+
+    function saveClick(obj, id) {
+        if (mockItem) {
+            sessionStorage.mockItem = JSON.stringify(mockItem)
+
+        } else {
+            sessionStorage.mockItem = ''
+        }
+        location.href = "editMock.html"
+    }
+
+    window.onload = function () {
+        $.post(URI_SIGN_LIST, {},
+            function (result) {
+                if (result.code == 200) {
+                    initList(result.data)
+                } else {
+                    alert(result.message)
+                }
+            }),
+            function (error) {
+                alert("网络连接失败！")
+            }
+    }
+
+</script>
+</body>
+</html>
