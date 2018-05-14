@@ -1,0 +1,26 @@
+{
+    "status": 1,
+    "message": "请求成功",
+    "result": {
+        "comment": [
+            {
+                "id": "2323",
+                "avatar": "https://res01.100bcy.com/file/upload/stonescms/2018180403/9653339e7d738280.png",
+                "nickname": "曹***服",
+                "membertype": "1",
+                "content": "习惯好评",
+                "content_img": [],
+                "createtime": "2018.04.22 10:01"
+            }
+        ],
+        "comment_total": "1",
+        "comment_img_total": "0",
+        "page": {
+            "pageNo": "1",
+            "pageSize": "2",
+            "totalPage": "1",
+            "totalRows": "1"
+        }
+    },
+    "env": "pro"
+}

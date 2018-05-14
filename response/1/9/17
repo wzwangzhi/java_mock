@@ -1,0 +1,93 @@
+{
+  "status": 1,
+  "message": "success",
+  "result": {
+    "goods": {
+      "id": "903",
+      "ccate": "63",
+      "title": "广西柳州特色螺蛳粉 280g*3盒",
+      "thumb": "https://res02.100bcy.com/attachment/jpg/2018/03/fNH2q5q7buG1KL5.jpg",
+      "unit": "件",
+      "description": "",
+      "content": "<p><br/></p><p><br/></p><p><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2018/03/P423nwB81kD9zjC.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2018/03/T2lDsh2zXFDekE4.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2018/03/dy9YF4G4jG0y40j.jpg\"/></p><p><br/></p>",
+      "marketprice": "39.90",
+      "saleprice": "48.00",
+      "profit": "3.96",
+      "total": "4",
+      "sales": 159,
+      "share_title": "广西柳州特色螺蛳粉 280g*3盒",
+      "share_icon": "https://res02.100bcy.com/attachment/jpg/2018/03/fNH2q5q7buG1KL5_100x100.jpg",
+      "share_url": "https://o.100iec.com/product?id=903&promotion_id=322",
+      "share_info": "广西有名特色小吃，正宗老柳州风味，采用上等大米制成的园米粉，软滑爽口，米香四溢。",
+      "share_pic": "https://res02.100bcy.com/attachment/share/share_903.png",
+      "specification": "",
+      "propaganda": "运气闪购，拼速度~",
+      "video_url": "",
+      "video_img": "",
+      "audio_url": "",
+      "uniacid": "1",
+      "tags": [
+        "https://res02.100bcy.com/attachment/png/2018/05/m5QVFTK90tx233v.png"
+      ],
+      "is_new": 0,
+      "status": "1",
+      "category": {
+        "id": "6",
+        "name": "健康休闲"
+      },
+      "is_spell": 0,
+      "pt_id": "",
+      "upvote": "28",
+      "downvote": "0",
+      "is_new_member": 0,
+      "maxbuy": "117",
+      "promotion_id": "322",
+      "promotion_end_time": "1525923000",
+      "service_time": 1525920865
+    },
+    "pics": [
+      "https://res02.100bcy.com/attachment/jpg/2018/03/fNH2q5q7buG1KL5.jpg",
+      "https://res02.100bcy.com/attachment/jpg/2018/03/Jh10h6iO68H888U.jpg",
+      "https://res02.100bcy.com/attachment/jpg/2018/03/ec18F3GQ2Ha59Uu.jpg",
+      "https://res02.100bcy.com/attachment/jpg/2018/03/Y3vEpB7721Dj39e.jpg"
+    ],
+    "properties": [
+      {
+        "title": "产地",
+        "content": "广西"
+      },
+      {
+        "title": "品牌",
+        "content": "壶城人家"
+      },
+      {
+        "title": "规格",
+        "content": "280g*3盒"
+      }
+    ],
+    "service": [
+      {
+        "title": "全场包邮",
+        "icon": "https://res02.100bcy.com/attachment/png/2017/08/Co24H3eVt372n3h.png",
+        "detail": "购物无门槛，一件代发"
+      },
+      {
+        "title": "原产地直发",
+        "icon": "https://res02.100bcy.com/attachment/png/2017/08/C7d7bw28u2WmmW5.png",
+        "detail": "去掉中间环节，从基地直接送到您家"
+      },
+      {
+        "title": "配送范围",
+        "icon": "https://res02.100bcy.com/attachment/png/2017/08/e6bY65yt5Y650YB.png",
+        "detail": "除新疆、西藏、宁夏、甘肃、青海、贵州、海南、港澳台以外，均可发货"
+      },
+      {
+        "title": "配送时效",
+        "icon": "https://res02.100bcy.com/attachment/png/2017/08/NsqpGGGwgM1gPzc.png",
+        "detail": "每日24点截单，截单后48小时内发货。为了保证产品的新鲜度，所有商品不支持预约发货。"
+      }
+    ],
+    "coupon": null
+  },
+  "env": "pro"
+}

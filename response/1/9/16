@@ -1,0 +1,94 @@
+{
+  "status": 1,
+  "message": "success",
+  "result": {
+    "goods": {
+      "id": "946",
+      "ccate": "32",
+      "title": "山东海阳网纹瓜2粒装（3.5-4斤/箱）",
+      "thumb": "https://res02.100bcy.com/attachment/jpg/2018/05/arzt6998Glt96R9.jpg",
+      "unit": "箱",
+      "description": "",
+      "content": "<p><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/uK5TtnR541974Tz.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/D5V5o1552YSpjD0.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/VA5hFmLZEf0HKAM.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/sFjnFI525605DQD.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/CMFXmn3nFnU4bM5.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/WCVPJTdLWJ8wJO1.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/tg9rZ91UmrTZ1D8.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/LvCDv75aw77554x.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/M2Ulyl8ppl42Y22.jpg\"/><img width=\"100%\" alt=\"jpg\" src=\"https://res02.100bcy.com/attachment/jpg/2017/06/qY4PPo7GepP4pg8.jpg\"/><img width=\"100%\" src=\"https://res02.100bcy.com/attachment/jpg/2018/04/QFfEm1tm0c100OC.jpg\"/></p>",
+      "marketprice": "38.00",
+      "saleprice": "38.00",
+      "profit": "4.00",
+      "total": "1000",
+      "sales": 52,
+      "share_title": "山东海阳网纹瓜2粒装（3.5-4斤）",
+      "share_icon": "https://res02.100bcy.com/attachment/jpg/2018/05/arzt6998Glt96R9_100x100.jpg",
+      "share_url": "https://o.100iec.com/product?id=946",
+      "share_info": "【山东海阳网纹瓜】果肉绵软爽脆并存，甜度适中搭配浓浓的果汁，这样的好瓜因为它是一瓜一藤。",
+      "share_pic": "https://res02.100bcy.com/attachment/share/share_946.png",
+      "specification": "",
+      "propaganda": "清新香味 香甜软糯",
+      "video_url": "",
+      "video_img": "",
+      "audio_url": "",
+      "uniacid": "1",
+      "tags": [
+        "https://res02.100bcy.com/attachment/png/2018/05/m5QVFTK90tx233v.png"
+      ],
+      "is_new": 1,
+      "status": "1",
+      "category": {
+        "id": "4",
+        "name": "特色果蔬"
+      },
+      "is_spell": 0,
+      "pt_id": "",
+      "upvote": "0",
+      "downvote": "0",
+      "is_new_member": 0,
+      "maxbuy": "1000",
+      "promotion_id": 0,
+      "promotion_end_time": 0,
+      "service_time": 1525920376
+    },
+    "pics": [
+      "https://res02.100bcy.com/attachment/jpg/2018/05/arzt6998Glt96R9.jpg",
+      "https://res02.100bcy.com/attachment/jpg/2018/05/t7n1tgIP7sN3s0p.jpg",
+      "https://res02.100bcy.com/attachment/jpg/2018/05/r76h6rhg6U9Dq9h.jpg",
+      "https://res02.100bcy.com/attachment/jpg/2018/05/m4d5YHf434j5Ky1.jpg",
+      "https://res02.100bcy.com/attachment/jpg/2018/05/B4fx5Z8qqZi24ff.jpg"
+    ],
+    "properties": [
+      {
+        "title": "产地",
+        "content": "山东海阳"
+      },
+      {
+        "title": "品牌",
+        "content": "百城优品"
+      },
+      {
+        "title": "规格",
+        "content": "3.5-4斤"
+      }
+    ],
+    "service": [
+      {
+        "title": "全场包邮",
+        "icon": "https://res02.100bcy.com/attachment/png/2017/08/Co24H3eVt372n3h.png",
+        "detail": "购物无门槛，一件代发"
+      },
+      {
+        "title": "原产地直发",
+        "icon": "https://res02.100bcy.com/attachment/png/2017/08/C7d7bw28u2WmmW5.png",
+        "detail": "去掉中间环节，从基地直接送到您家"
+      },
+      {
+        "title": "配送范围",
+        "icon": "https://res02.100bcy.com/attachment/png/2017/08/e6bY65yt5Y650YB.png",
+        "detail": "除新疆、西藏、宁夏、甘肃、青海、贵州、海南、港澳台以外，均可发货"
+      },
+      {
+        "title": "配送时效",
+        "icon": "https://res02.100bcy.com/attachment/png/2017/08/NsqpGGGwgM1gPzc.png",
+        "detail": "每日24点截单，截单后48小时内发货。为了保证产品的新鲜度，所有商品不支持预约发货。"
+      }
+    ],
+    "coupon": null
+  },
+  "env": "pro"
+}

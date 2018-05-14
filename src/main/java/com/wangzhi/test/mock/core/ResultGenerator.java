@@ -20,6 +20,10 @@ public class ResultGenerator {
     }
 
     public static Result genFailResult(String message) {
+        return genFailResult(ResultCode.FAIL,message);
+    }
+
+    public static Result genFailResult(ResultCode resultCode, String message) {
         return new Result()
                 .setCode(ResultCode.FAIL)
                 .setMessage(message);

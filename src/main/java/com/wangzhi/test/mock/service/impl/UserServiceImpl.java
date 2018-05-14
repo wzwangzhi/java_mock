@@ -29,23 +29,26 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     private User user;
 
     @Override
-    public User login(String name, String pass) {
-        logger.debug("code" + user.hashCode());
-        logger.debug("code" + user.toString());
-        user.setUsername(name);
-        user.setPassword(pass);
-        return userMapper.selectOne(user);
+    public User login(String userName, String userPass) {
+        user.setUserName(userName);
+        user.setUserPass(userPass);
+        User user = userMapper.selectOne(this.user);
+        if (user != null) {
+            return user;
+        }
+        user = findBy("userName", userName);
+        if (user != null) {
+            return null;
+        }
+        return register(userName, userPass, userName);
     }
 
     @Override
-    public User register(String name, String pass) {
-        logger.debug("code" + user.hashCode());
-        logger.debug("code" + user.toString());
-        user.setUsername(name);
-        user.setPassword(pass);
-        user.setSex(1);
-        user.setRegisterDate(new Date());
-        user.setNickName(name);
+    public User register(String userName, String userPass, String userNick) {
+        user.setUserName(userName);
+        user.setUserPass(userPass);
+        user.setRegisterTime(new Date());
+        user.setUserNick(userNick);
         userMapper.insert(user);
         return user;
     }

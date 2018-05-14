@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangzhi.test.mock.dao.MockResponseMapper">
+    <resultMap id="MockResponseResultMap" type="com.wangzhi.test.mock.model.MockResponse">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="responseId" jdbcType="INTEGER" property="responseId"/>
+        <result column="responseTag" jdbcType="INTEGER" property="responseTag"/>
+        <result column="projectId" jdbcType="INTEGER" property="projectId"/>
+        <result column="mockId" jdbcType="INTEGER" property="mockId"/>
+        <result column="responsePath" jdbcType="VARCHAR" property="responsePath"/>
+        <result column="responseDesc" jdbcType="VARCHAR" property="responseDesc"/>
+    </resultMap>
+    <select id="selectMockResponseByMock" parameterType="int" resultType="com.wangzhi.test.mock.model.MockResponse">
+    SELECT * FROM mock_response WHERE mockId = #{mockId} AND responseId = #{responseId}
+    </select>
+    <select id="deleteMockResponseByMock" parameterType="int">
+    DELETE FROM mock_response WHERE mockId = #{mockId}
+    </select>
+    <select id="selectMockResponseList" parameterType="int" resultMap="MockResponseResultMap">
+    SELECT * FROM mock_response WHERE mockId = #{mockId}
+    </select>
+</mapper>

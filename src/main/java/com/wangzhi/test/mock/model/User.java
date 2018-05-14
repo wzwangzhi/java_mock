@@ -15,113 +15,65 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "userId")
+    private Integer userId;
+    @Column(name = "userName")
+    private String userName;
+    @Column(name = "userPass")
+    private String userPass;
+    @Column(name = "userNick")
+    private String userNick;
+    @Column(name = "registerTime")
+    private Date registerTime;
 
-    private String username;
-
-    private String password;
-
-    @Column(name = "nick_name")
-    private String nickName;
-
-    private Integer sex;
-
-    @Column(name = "register_date")
-    private Date registerDate;
-
-    /**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    /**
-     * @return username
-     */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    /**
-     * @param username
-     */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    /**
-     * @return password
-     */
-    public String getPassword() {
-        return password;
+    public String getUserPass() {
+        return userPass;
     }
 
-    /**
-     * @param password
-     */
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
     }
 
-    /**
-     * @return nick_name
-     */
-    public String getNickName() {
-        return nickName;
+    public String getUserNick() {
+        return userNick;
     }
 
-    /**
-     * @param nickName
-     */
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setUserNick(String userNick) {
+        this.userNick = userNick;
     }
 
-    /**
-     * @return sex
-     */
-    public Integer getSex() {
-        return sex;
+    public Date getRegisterTime() {
+        return registerTime;
     }
 
-    /**
-     * @param sex
-     */
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
-
-    /**
-     * @return register_date
-     */
-    public Date getRegisterDate() {
-        return registerDate;
-    }
-
-    /**
-     * @param registerDate
-     */
-    public void setRegisterDate(Date registerDate) {
-        this.registerDate = registerDate;
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", sex=" + sex +
-                ", registerDate=" + registerDate +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPass='" + userPass + '\'' +
+                ", userNick='" + userNick + '\'' +
+                ", registerTime=" + registerTime +
                 '}';
     }
 }

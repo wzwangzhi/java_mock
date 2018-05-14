@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangzhi.test.mock.dao.MockItemMapper">
+    <resultMap id="MockResultMap" type="com.wangzhi.test.mock.model.MockItem">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="mockId" jdbcType="INTEGER" property="mockId"/>
+        <result column="projectId" jdbcType="INTEGER" property="projectId"/>
+        <result column="mockGroupId" jdbcType="INTEGER" property="mockGroupId"/>
+        <result column="mockGroupDesc" jdbcType="VARCHAR" property="mockGroupDesc"/>
+        <result column="mockDesc" jdbcType="VARCHAR" property="mockDesc"/>
+        <result column="mockUrl" jdbcType="VARCHAR" property="mockUrl"/>
+        <result column="mockDesc" jdbcType="VARCHAR" property="mockDesc"/>
+        <result column="mockState" jdbcType="INTEGER" property="mockState"/>
+        <result column="mockResponseId" jdbcType="INTEGER" property="mockResponseId"/>
+    </resultMap>
+    <select id="selectMockByUrl" parameterType="String" resultType="com.wangzhi.test.mock.model.MockItem">
+    SELECT * FROM mock_item WHERE mockUrl = #{mockUrl,jdbcType=VARCHAR} AND projectId = #{projectId,jdbcType=VARCHAR}
+    </select>
+    <select id="selectMockByProject" parameterType="String" resultMap="MockResultMap">
+    SELECT * FROM mock_item WHERE projectId = #{projectId}
+    </select>
+    <select id="switchMock" parameterType="String">
+    UPDATE mock_item SET mockState = #{mockState} WHERE mockId = #{mockId}
+    </select>
+</mapper>

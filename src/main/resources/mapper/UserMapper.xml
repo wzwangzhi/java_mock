@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangzhi.test.mock.dao.UserMapper">
-<resultMap id="BaseResultMap" type="com.wangzhi.test.mock.model.User">
-  <!--
-    WARNING - @mbg.generated
-  -->
-  <id column="id" jdbcType="INTEGER" property="id" />
-  <result column="username" jdbcType="VARCHAR" property="username" />
-  <result column="password" jdbcType="VARCHAR" property="password" />
-  <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
-  <result column="sex" jdbcType="INTEGER" property="sex" />
-  <result column="register_date" jdbcType="TIMESTAMP" property="registerDate" />
-</resultMap>
+    <resultMap id="BaseResultMap" type="com.wangzhi.test.mock.model.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="userId" jdbcType="INTEGER" property="userId"/>
+        <result column="userName" jdbcType="VARCHAR" property="userName"/>
+        <result column="userPass" jdbcType="VARCHAR" property="userPass"/>
+        <result column="userNick" jdbcType="VARCHAR" property="userNick"/>
+        <result column="registerTime" jdbcType="TIMESTAMP" property="registerTime"/>
+    </resultMap>
 </mapper>
