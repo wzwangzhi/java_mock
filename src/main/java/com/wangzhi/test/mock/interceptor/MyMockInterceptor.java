@@ -3,8 +3,8 @@ package com.wangzhi.test.mock.interceptor;
 import com.wangzhi.test.mock.core.ProjectConstant;
 import com.wangzhi.test.mock.core.ResultGenerator;
 import com.wangzhi.test.mock.kit.FileManager;
-import com.wangzhi.test.mock.kit.HttpRequest;
 import com.wangzhi.test.mock.kit.IgnoreSslKit;
+import com.wangzhi.test.mock.kit.OkHttpUtils;
 import com.wangzhi.test.mock.kit.VerificationKit;
 import com.wangzhi.test.mock.model.MockItem;
 import com.wangzhi.test.mock.model.MockProject;
@@ -12,9 +12,11 @@ import com.wangzhi.test.mock.model.MockResponse;
 import com.wangzhi.test.mock.service.MockItemService;
 import com.wangzhi.test.mock.service.MockProjectService;
 import com.wangzhi.test.mock.service.MockResponseService;
+import okhttp3.FormBody;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -23,7 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -115,41 +116,56 @@ public class MyMockInterceptor extends HandlerInterceptorAdapter {
             IgnoreSslKit.ignoreSsl();
         }
         String path = baseUrl + mockUrl;
+//        path = path.replaceAll("//", "/");
         logger.debug("真实路径：" + path);
-        //params
-        Map<String, String> parameterMap = new HashMap();
-        Map<String, String[]> requestParameterMap = request.getParameterMap();
-        for (Map.Entry<String, String[]> entry : requestParameterMap.entrySet()) {
-            parameterMap.put(entry.getKey(), entry.getValue()[0]);
-        }
-        //request
-        HttpRequest httpRequest;
-        if ("GET".equalsIgnoreCase(request.getMethod())) {
-            httpRequest = HttpRequest.get(path, parameterMap, true);
-//            return JSON.parse(httpRequest.body());
-        } else {
-            httpRequest = HttpRequest.post(path, parameterMap, true);
-//            return JSON.parse(httpRequest.body());
-        }
+        //request.Builder
+        Request.Builder httpRequestBuilder = new Request.Builder();
         //header
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
-            httpRequest.header(request.getHeader(headerNames.nextElement()));
+            String key = headerNames.nextElement();
+            if (key.equalsIgnoreCase("host")) {
+                continue;
+            }
+            httpRequestBuilder.header(key, key);
         }
-        //result
-        String responseMessage;
-        if (HttpMethod.GET.equals(request.getMethod())) {
-            responseMessage = httpRequest.body();
+        httpRequestBuilder.header("1", "1");
+        //params
+        if ("GET".equalsIgnoreCase(request.getMethod())) {
+            path += "?";
+        }
+        FormBody.Builder requestBody = new FormBody.Builder();
+        Map<String, String[]> requestParameterMap = request.getParameterMap();
+        for (Map.Entry<String, String[]> entry : requestParameterMap.entrySet()) {
+            if ("GET".equalsIgnoreCase(request.getMethod())) {
+                path += entry.getKey() + "=" + entry.getValue()[0] + "&";
+            } else {
+                requestBody.add(entry.getKey(), entry.getValue()[0]);
+            }
+        }
+        Request httpRequest;
+        if ("GET".equalsIgnoreCase(request.getMethod())) {
+            httpRequest = httpRequestBuilder.url(path).build();
         } else {
-            responseMessage = httpRequest.body();
+            httpRequest = httpRequestBuilder.url(path).post(requestBody.build()).build();
         }
-        response.setCharacterEncoding("UTF-8");
-        response.setHeader("Content-type", "application/json;charset=UTF-8");
-        response.setStatus(200);
+        Response httpResponse;
         try {
-            response.getWriter().write(responseMessage);
-        } catch (IOException ex) {
-            logger.error(ex.getMessage());
+            httpResponse = OkHttpUtils.getInstance().doSync(httpRequest);
+        } catch (IOException e) {
+            e.printStackTrace();
+            VerificationKit.responseResult(response, ResultGenerator.genFailResult("获取真实返回值失败！！！"));
+            return;
+        }
+        if (!httpResponse.isSuccessful()) {
+            VerificationKit.responseResult(response, ResultGenerator.genFailResult("获取真实返回值失败！！！"));
+            return;
+        }
+        try {
+            VerificationKit.responseResult(response, httpResponse.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+            VerificationKit.responseResult(response, ResultGenerator.genFailResult("获取真实返回值失败！！！"));
         }
     }
 }
